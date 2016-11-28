@@ -4,34 +4,37 @@
     <title>Practice Form</title>
   </head>
   <body>
+  <h1>Mailing List</h1>
   <form action="success.html" method="post">
     <div>
-      <label>Type of bicycle:</label>
-      <select name="bike">
-        <option value="road">Road</option>
-        <option value="road">Mountain</option>
-        <option value="road">Cyclocross</option>
+      <label>Preferred Contact:</label>
+      <select name="contact">
+        <option value="pref">Email</option>
+        <option value="pref">Letter</option>
       </select>
     </div>
     <br>
-  <div>
-    <label>Email:</label>
-    <input type="email" name="email">
-  </div>
-  <br>
-  <div>
-    <label>Password:</label>
-    <input type="password" name="password">
-  </div>
-  <br>
-  <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
-  <br>
     <div>
-      <input type="checkbox" name="cb-agree" value="agree">
-      I am prepared to lead this adventure.
+      <label>Name:</label>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" name="email">
+    </div>
+    <div>
+      <label>Mailing Address:</label>
+      <input type="text" name="address">
     </div>
     <br>
-  <button type="submit">Log in</button>
-</form>
+    <textarea name="textarea" rows="10" cols="50">Enter comment here</textarea>
+    <br>
+    <div>
+      <input type="checkbox" name="cb-agree" value="agree">
+      Check here to receive spam.
+    </div>
+    <br>
+  <button type="submit">Subscribe</button>
+  </form>
   </body>
 </html>
