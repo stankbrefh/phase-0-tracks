@@ -1,0 +1,24 @@
+img {
+
+}
+
+#octopus {
+	position: fixed;
+	margin-top: 100px;
+	margin-left: 40%;
+	z-index: -1;
+}
+
+#glasses {
+	position: fixed;
+	margin-top: 200px;
+	margin-left: 43%;
+	z-index: 1;
+}
+
+#hat {
+	position: fixed;
+	margin-top: 50px;
+	margin-left: 38%;
+	z-index: 0;
+}
