@@ -2,7 +2,6 @@ body {
   max-width: 960px;
   vertical-align: top;
   display: flex;
-  margin: !important auto;
 }
 
 blockquote {
