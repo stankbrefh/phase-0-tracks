@@ -23,6 +23,10 @@
 	background-color: blue;
 }
 
-#list{
-	background-color: red;
+ul li {
+	background-color: #666;
+}
+
+.featured {
+	font-weight: 900;
 }
