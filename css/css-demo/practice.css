@@ -1,0 +1,28 @@
+#contact-info{
+	font-size: .8em;
+}
+
+.job{
+	background-color: #e9e5dc;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	padding: 25px; 
+	border-radius: 5px;
+}
+
+.job:hover {
+	background-color: #696659;
+}
+
+.ulist{
+	font-size: .8em;
+}
+
+
+.listitem{
+	background-color: blue;
+}
+
+#list{
+	background-color: red;
+}
