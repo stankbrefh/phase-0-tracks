@@ -1,3 +1,7 @@
+puts "Greetings! How many employess are to be processed?"
+emp_total = gets.chomp.to_i
+emp_total.times do
+
 puts "What is your name?"
 emp_name = gets.chomp
 
