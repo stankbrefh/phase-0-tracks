@@ -1,15 +1,15 @@
 puts "Greetings! How many employess are to be processed?"
-emp_total = gets.chomp.to_i
+emp_total = gets.to_i
 emp_total.times do
 
 puts "What is your name?"
 emp_name = gets.chomp
 
 puts "How old are you?"
-emp_age = gets.chomp.to_i
+emp_age = gets.to_i
 
 puts "What year were you born?"
-birth_year = gets.chomp.to_i
+birth_year = gets.to_i
 
 puts "Our company cafeteria serves garlic bread. Should we order you some? (Y/N)"
 garlic_bread = gets.chomp.upcase
@@ -36,19 +36,19 @@ else health_insurance = false
 end
 
 puts "Please list ALL allergies, one at a time. Enter 'done' once you are finished."
-	done = false
-	until done
-		allergy = gets.chomp.downcase
-		break if allergy == "done"
-		if allergy == "sunshine"
-			done = true
-		end
+done = false
+until done
+	allergy = gets.chomp.downcase
+	break if allergy == "done"
+	if allergy == "sunshine"
+		done = true
 	end
+end
 
 verdict = nil
 verdict = "Probably not a vampire." if birth_year == Time.now.year - emp_age && (garlic_bread || health_insurance)
 verdict = "Probably a vampire." if birth_year != Time.now.year - emp_age && (!garlic_bread || !health_insurance) || allergy == "sunshine"
-verdict = "Almost certainly a vampire." if birth_year != Time.now.year - emp_age && (!garlic_bread || !health_insurance)
+verdict = "Almost certainly a vampire." if birth_year != Time.now.year - emp_age && !garlic_bread && !health_insurance
 verdict = "Definitely a vampire." if emp_name.downcase == "drake cula" || emp_name.downcase == "tu fang"
 verdict = "Results inconclusive." if verdict == nil
 
