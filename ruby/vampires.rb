@@ -35,11 +35,22 @@ if wants_health_ins == "Y"
 else wants_health_ins = false
 end
 
+puts "Please list ALL allergies, one at a time. Type 'done' when finished."
+  done = false
+  until done
+    allergy = gets.chomp.downcase
+    break if allergy == "done"
+    if allergy == "sunshine"
+      done = true
+    end
+  end
+
 result = nil
 result = "Probably not a vampire." if birth_year == Time.now.year - emp_age && (wants_garlic_bread || wants_health_ins)
-result = "Probably a vampire." if birth_year != Time.now.year - emp_age && (!wants_garlic_bread || !wants_health_ins)
+result = "Probably a vampire." if birth_year != Time.now.year - emp_age && (!wants_garlic_bread || !wants_health_ins) || allergy == "sunshine"
 result = "Almost certainly a vampire." if birth_year != Time.now.year - emp_age && (!wants_garlic_bread || !wants_health_ins)
 result = "Definitely a vampire." if emp_name.downcase == "drake cula" || emp_name.downcase == "tu fang"
 result = "Results inconclusive." if result == nil
 
 puts result
+end
