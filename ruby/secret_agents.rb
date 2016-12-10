@@ -14,23 +14,32 @@ def encrypt(string)
 	  string[index]
 	else
 		string[index] = string[index].next
-		p string[index]
 	end
 		index += 1
 	end
 	return string
 end
 
-encrypt("z zz")
+encrypt("abc")
 
-def encrypt (string)   
-	index = 0   
-	temp = ""   
-	while index < string.length        
-		temp[index] = string[index].next     
-	index += 1  
-	end 
-	return temp 
-end  
-a = "zzz" 
-encrypt(a)
+def decrypt(string)
+	password2 = ""
+	temp = 0
+	index = 0
+	keystring = "abcdefghijklmnopqrstuvwxyz"
+	while index < string.length
+		temp = string[index]
+		temp_index = keystring.index(temp)
+		temp_index -= 1
+		password2 [index] = keystring[temp_index]
+		index += 1
+	end
+	return password2
+end
+
+decrypt("zabc")
+decrypt(encrypt("swordfish"))
+
+# First it encrypts "swordfish" and then returns that string of "txpsegjti"
+# Then passes that string into the decrypt method,
+# The decrypt method accepts the string and returns "swordfish".
