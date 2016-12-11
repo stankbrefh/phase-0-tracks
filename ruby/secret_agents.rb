@@ -47,10 +47,11 @@ end
 # encrpyt("zed") => "afe"
 # decrypt("bcd") => "zed"
 # decrypt("afe") => "abc"
-# decrypt(encrypt("swordfish"))
 
-# First it encrypts "swordfish" and then returns that string of "txpsegjti".
-# Then it passes that string into the decrypt method.
+# decrypt(encrypt("swordfish"))
+# Calling nested methods work as expected.
+# First it encrypts "swordfish" and then returns the string "txpsegjti".
+# Next it passes that string into the decrypt method.
 # The decrypt method accepts the string and returns "swordfish".
 
 # DRIVER CODE
@@ -63,7 +64,6 @@ puts "Please enter message:"
 message = gets.chomp.downcase
 
 # Set variable to call method of user's choice
-final_message = ""
 if answer == "e"
 	final_message = encrypt(message)
 else answer == "d"
@@ -72,3 +72,23 @@ end
 
 # Display encrypted/decrypted message
 puts final_message
+
+# EXTRA (more elegant Encrypter)
+# puts "Single word to encrypt:"
+# string = gets.chomp.downcase
+# def encrypter(string)
+# 	alphabet = ('a'..'z').to_a 
+# 	key = Hash[alphabet.zip(alphabet.rotate)]
+# 	string.each_char.inject("") {|i, char| i + key[char]}
+# end
+# puts encrypter(string)
+#
+# EXTRA (more elegant Decrypter)
+# puts "Single word to decrypt:"
+# string = gets.chomp.downcase
+# def decrypter(string)
+# 	alphabet = ('a'..'z').to_a 
+# 	key = Hash[alphabet.zip(alphabet.rotate(-1))]
+# 	string.each_char.inject("") {|i, char| i + key[char]}
+# end
+# puts decrypter(string)
