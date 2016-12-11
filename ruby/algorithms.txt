@@ -33,3 +33,35 @@ Step Four: wait for doors to close.
 		-else repeat Step Four.
 
 Exit.
+
+PB & J Algorithm
+
+-no sandwhich exists and time is noon.
+-while no sandwich exists and time is noon:
+	-retrieve two slices of bread.
+	-retreive peanut butter.
+	-retreive jelly.
+	-retreive knife.
+	-place all materials on kitchen counter.
+	-lay bread flat, side-by-side.
+	-take knife and spread left-bread with peanut butter:
+		-until left-bread is thoroughly covered,
+			-keep spreading.
+	-look around:
+		-if nobody is watching you, 
+			-lick peanut butter off knife,
+		-else clean knife in sink.
+	-take knife and spread right-bread with jelly:
+		-until right-bread is lighlty covered with jelly,
+			-keep spreading.
+	-look around:
+		-if nobody is watching you, 
+			-lick jelly off knife,
+		-else clean knife in sink.
+	-put jelly-side of right-bread on top of peanut butter side of left-bread.
+	-sandwich exists!
+-bring sandwich to master.
+-have existential crisis -- this is your life.
+-wait until noon or self-destruct.
+
+Exit.
