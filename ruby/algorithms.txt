@@ -1,0 +1,35 @@
+Elevator Algorithm
+
+Step One: view current floor.
+	-if desired floor is equal to current floor, 
+		-exit program; you made it!
+	-if desired floor is greater than current floor, 
+		-press up arrow; 
+		-wait for elevator to arrive.
+	-if desired floor is less than current floor,
+		-press down arrow.
+		-wait for elevator to arrive.
+
+Step Two: when the elevator arrives, and the doors open:
+	-if there is enough room for you to enter,
+		-enter the elevator.
+	-else, wait 5 seconds until after the doors close
+		-and repeat step one.
+
+Step Three: once inside the elevator, 
+	-scan each vertical wall for button panel.
+	-once panel is found, scan each button
+	-until button number is equal to number of desired floor,
+		-scan next button.
+	-press button of desired floor.
+	
+Step Four: wait for doors to close.
+	-stand quietly.
+	-avoid eye contact and conversations with others.
+		-if eye contact is made, enable self-destruct.
+	-when doors open, scan current floor:
+		-if current floor is equal to desired floor,
+		-exit elevator; you made it!
+		-else repeat Step Four.
+
+Exit.
