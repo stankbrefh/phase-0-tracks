@@ -101,3 +101,34 @@ hearthstone_classes = {
     ]
   }
 }
+
+# Display the value of druid's hero
+puts hearthstone_classes[:druid][:hero]
+
+# Display priest's first legend
+puts hearthstone_classes[:priest][:legends][0]
+
+# Display all key values stored in mage and capitalizes each
+hearthstone_classes[:mage].each {|key, value| puts "#{key.capitalize}: #{value}"}
+
+# Display warrior's power
+puts hearthstone_classes[:warrior][:power]
+
+# Display a list of all classes and capitalizes each
+hearthstone_classes.each do |key, value| 
+  puts "#{key.capitalize}"
+end
+
+# Store the value of nested values into a new array
+total_value = []
+hearthstone_classes.each do |key, value| 
+  value.each do |key2, value2|
+    total_value << value2
+  end
+end
+
+# Store only the legends from new array into new variable
+legendaries = total_value.select.with_index{|_,i| (i+1) % 3 == 0}
+
+# Display a list of ALL legends
+puts legendaries
