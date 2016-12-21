@@ -27,6 +27,21 @@ class Santa
     reindeer_ranking.delete(reindeer)
     reindeer_ranking << reindeer
   end
+  
+  # Showing methods per rubric requirements
+  # # Getter methods (Refactored)
+  # def age
+  #   @age
+  # end
+  
+  # def ethnicity
+  #   @ethnicity
+  # end
+  
+  # # Setter method (Refactored)
+  # def gender=(new_gender)
+  #   @gender = new_gender
+  # end
 end
 
 # Driver code
