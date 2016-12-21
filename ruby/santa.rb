@@ -1,5 +1,8 @@
 # Define class Santa
 class Santa
+  attr_reader :ethnicity
+  attr_accessor :gender, :age
+  
   def initialize(gender, ethnicity)
     @gender = gender
     @ethnicity = ethnicity
@@ -24,25 +27,16 @@ class Santa
     reindeer_ranking.delete(reindeer)
     reindeer_ranking << reindeer
   end
-  
-  # Getter methods
-  def age
-    @age
-  end
-  
-  def ethnicity
-    @ethnicity
-  end
-  
-  # Setter method
-  def gender=(new_gender)
-    @gender = new_gender
-  end
 end
 
 # Driver code
-santa1 = Santa.new
-santa1.speak
-santa1.eat_milk_and_cookies('snickerdoodle')
-p santas[1].ethnicity
-p santas[0].celebrate_birthday
+santas = []
+gender = ["agender", "female", "bigender", "male", "female", "gender fluid", "robot"]
+ethnicity = ["black", "Latino", "white", "Japanese-African", "dragon", "unicorn"]
+
+num = 100000
+num.times do
+  santa = Santa.new(gender.sample, ethnicity.sample)
+  santa.age = rand(0...140)
+  puts "#Santa is #{santa.age} years old. Santa identifies as a #{santa.ethnicity} #{santa.gender}."
+end
