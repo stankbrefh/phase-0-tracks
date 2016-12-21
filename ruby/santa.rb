@@ -8,7 +8,7 @@ class Santa
     @ethnicity = ethnicity
     @age = 0
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    p 'Initializing Santa instance ...'
+    puts 'Initializing Santa instance ...'
   end
   
   def speak
@@ -38,5 +38,5 @@ num = 100000
 num.times do
   santa = Santa.new(gender.sample, ethnicity.sample)
   santa.age = rand(0...140)
-  puts "#Santa is #{santa.age} years old. Santa identifies as a #{santa.ethnicity} #{santa.gender}."
+  puts "Santa is #{santa.age} years old. Santa identifies as a #{santa.ethnicity} #{santa.gender}."
 end
