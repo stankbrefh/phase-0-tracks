@@ -12,8 +12,11 @@
 # Shout.yell_happily('LOLLL!!1') # => 'LOLLL!!1XD'
 
 module Shout
-  def yell(words)
-  	puts "#{words.upcase}!!!"
+  def yell_angrily(words)
+    words + '!!!' + ':('
+  end
+  def yell_happily(words)
+    words + 'XD'
   end
 end
 
@@ -21,12 +24,11 @@ class Grumpy
   include Shout
 end
 
-class Happy
-  include Shout
+class Happy < Grumpy
 end
 
-person_grumpy = Grumpy.new
-person_grumpy.yell("I am upset")
+g = Grumpy.new
+puts g.yell_angrily("STAHHHHP")
 
-person_happy = Happy.new
-person_happy.yell("I am happy")
+h = Happy.new
+puts h.yell_happily("LOLOL!!1!")
