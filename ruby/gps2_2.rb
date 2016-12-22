@@ -63,3 +63,29 @@ remove(final_list, 'Lemonade')
 update(final_list, 'Ice Cream', 1)
 
 printout(final_list)
+
+# REFLECTION
+# What did you learn about pseudocode from working on this challenge?
+# The better the pseudocode, the easier it becomes to create the logic for the code.
+# It is a good way to break a big program into many smaller, easier to see sections, 
+# which is much more manageable.
+
+# What are the tradeoffs of using arrays and hashes for this challenge?
+# Arrays are ordered and can only store an integer-indexed collection, 
+# but a hash can store key-value pairs.
+
+# What does a method return?
+# A method implicitly returns the evaluated result of the last line that is executed, 
+# unless an explicit return comes before it.
+
+# What kind of things can you pass into methods as arguments?
+# Methods can accept all kinds of objects as arguments (hashes, arrays, strings, 
+# integers, booleans, et cetera).
+
+# How can you pass information between methods?
+# One way is by passing the variables into the method as an argument.
+# Another way is by creating variables with greater scope (id est global variables).
+
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+# This challenge definitely solidified the concept of implicit and explicit returns in Ruby. 
+# It also worked to visualize the scope of variables.
