@@ -31,7 +31,9 @@ def groceries(list)
   grocery_list = Hash.new()
   each_item = list.split(' ')
   each_item.each {|item|grocery_list[item] = 1}
-  grocery_list
+  grocery_list # => Maria, this was the reason we had an error;
+  # we forgot to tell Ruby to return the hash, so Ruby returned 
+  # line 32 (the array) instead...
 end
 
 def add_items(list, item, qty = 1)
