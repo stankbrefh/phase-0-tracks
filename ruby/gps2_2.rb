@@ -8,38 +8,56 @@
 # output: hash
 
 # Method to add an item to a list
-# input: list, item name, and optional quantity
-# steps: 
-# output: 
+# input: list, item name, and optional quantity 
+# steps: create method that takes list items and add item to it with quantity of item
+# output: print of the hash with the new items
 
 # Method to remove an item from the list
-# input:
-# steps:
-# output:
+# input: list and item
+# steps: remove key value pair from hash
+# output: print of the hash with the remaining items
 
 # Method to update the quantity of an item
-# input:
-# steps:
-# output:
+# input: list, item, and quantity
+# steps: same as adding item, updating will overwrite existing data
+# output: print out the updated hash
 
 # Method to print a list and make it look pretty
-# input:
-# steps:
-# output:
+# input: list
+# steps: iterate through hash and print key value pairs
+# output: print result separately
 
 def groceries(list)
   grocery_list = Hash.new()
-	each_item = list.split(' ')
-	each_item.each {|item|grocery_list[item] = 1}
+  each_item = list.split(' ')
+  each_item.each {|item|grocery_list[item] = 1}
   grocery_list
 end
 
-p final_list = groceries('carrots apples cereal pizza')
-
 def add_items(list, item, qty = 1)
   list[item] = qty
-  p list
 end
 
-add_items(final_list, 'milk', 2)
+def remove(list, item)
+  list.delete(item)
+end
 
+def update(list, item, qty)
+  list[item] = qty
+end
+
+def printout(list)
+  list.each {|item, qty| puts "#{item}: #{qty}"}
+end
+
+final_list = groceries('Carrots Apples Cereal Pizza')
+
+# DRIVER CODE
+add_items(final_list, 'Lemonade', 2)
+add_items(final_list, 'Tomatoes', 3)
+add_items(final_list, 'Onions', 1)
+add_items(final_list, 'Ice Cream', 4)
+remove(final_list, 'Lemonade')
+update(final_list, 'Ice Cream', 1)
+
+printout(final_list)
