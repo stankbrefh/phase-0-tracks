@@ -3,9 +3,9 @@ class Game
   attr_accessor :word
 
   def initialize(word)
-    @word = word
-    @guesses = word.length
-    @current_state = Array.new(word.length) { |i| "_" }
+  	@word = word
+  	@guesses = word.length
+  	@current_state = Array.new(word.length) { |i| "_" }
     @wrong_letters = []
     @gameover = false
   end
@@ -31,6 +31,15 @@ class Game
   end
 end
 
+hanged = <<HANG
++---+-
+|   |
+|   0
+|   |\\
+|   /\\
+-+----------
+HANG
+
 puts 'Enter word:'
 input = gets.chomp
 game = Game.new(input)
@@ -49,4 +58,5 @@ end
 
 if not game.gameover?
   puts 'You\'re a loser and nobody likes you!'
+  puts hanged
 end
