@@ -49,7 +49,9 @@ def update(list, item, qty)
 end
 
 def printout(list)
+  puts "=" * 37 + "\n"
   list.each {|item, qty| puts "#{item}: #{qty}"}
+  puts "=" * 37 + "\n"
 end
 
 final_list = groceries('Carrots Apples Cereal Pizza')
