@@ -1,23 +1,23 @@
 class TodoList
 
-  def initialize(arr)
-  	@arr = arr
+  def initialize(array)
+    @array = array
   end
 
   def get_items
-    @arr
+    @array
   end
 
   def add_item(item)
-  	@arr << item
+    @array << item
   end
 
   def delete_item(item)
-  	@arr.delete(item)
+    @array.delete(item)
   end
 
-  def get_item(item)
-  	@arr[item]
+  def get_item(index)
+    @array[index]
   end
 
 end
