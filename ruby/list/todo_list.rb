@@ -12,4 +12,8 @@ class TodoList
   	@arr << item
   end
 
+  def delete_item(item)
+  	@arr.delete(item)
+  end
+
 end
