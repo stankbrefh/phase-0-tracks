@@ -8,4 +8,8 @@ class TodoList
     @arr
   end
 
+  def add_item(item)
+  	@arr << item
+  end
+
 end
