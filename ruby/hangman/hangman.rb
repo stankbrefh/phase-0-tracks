@@ -4,14 +4,13 @@ class Game
 
   def initialize(word)
     @word = word
-    @guesses = word.length
-    @current_state = Array.new(word.length) { |i| "_" }
+    @guesses = word.length + 3
+    @current_state = Array.new(word.length) { "_" }
     @wrong_letters = []
     @gameover = false
   end
   
   def guess(letter)
-    correct = false
     if @wrong_letters.include? letter
       puts 'How\'s about you try a different letter, wise guy!'
     else
@@ -20,13 +19,11 @@ class Game
           @word.length.times do |i|
             if @word[i] == letter
               @current_state[i] = letter
-              correct = true
             end
           end
         end
         @guesses -= 1
     end
-    return correct
   end
 
   def gameover
@@ -36,18 +33,14 @@ class Game
 end
 
 def is_letter(letter)
-  alphabet = 'abcdefghijklmnopqrstuvwxyz'
-  if not letter.empty?
-    return (alphabet.include? letter[0]) && (letter.length == 1)
-  else
-    return false
-  end
+  alphabet = ('a'..'z').to_a
+  (alphabet.include? letter[0]) && (letter.length == 1) if !letter.empty?
 end
 
 def is_word(word)
   word = word.downcase
   word.length.times do |i|
-    if not is_letter(word[i])
+    if !is_letter(word[i])
       return false
     end
   end
@@ -92,7 +85,7 @@ until game.guesses == 0 || game.gameover
   end
 end
 
-if not game.gameover
+if !game.gameover
   puts 'You\'re a loser and nobody likes you!'
   puts hanged
 end
