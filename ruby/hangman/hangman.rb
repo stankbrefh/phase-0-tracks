@@ -15,21 +15,14 @@ class Game
       puts 'How\'s about you try a different letter, wise guy!'
     else
       @wrong_letters << letter
-        if @word.include? letter
-          @word.length.times do |i|
-            if @word[i] == letter
-              @current_state[i] = letter
-            end
-          end
-        end
-        @guesses -= 1
+      @word.length.times { |i| @current_state[i] = letter if @word[i] == letter } if @word.include? letter
+      @guesses -= 1
     end
   end
 
   def gameover
     @gameover = (@current_state.join == @word)
   end
-
 end
 
 def is_letter(letter)
@@ -38,7 +31,6 @@ def is_letter(letter)
 end
 
 def is_word(word)
-  word = word.downcase
   word.length.times do |i|
     if !is_letter(word[i])
       return false
