@@ -1,16 +1,18 @@
+# DESCRIPTION
 # One user can enter a word and another user attempts to guess the word
 # Guesses are limited, and the number of guesses available is related to the length of the word
 # Repeated guesses do not count against the user
 # The guessing player receives continual feedback on the current state of the word
 # The user should get a congratulatory message if they win, and a taunting message if they lose
 
-# First player enters word and word is stored in a variable
-# Display the length of the word to the user in underscores
-# Set correct_guesses to less than the length of the word
-# Prompt the second player to guess a letter
-# If the guess is correct increment correct_guesses by 1, and reveal the correct letter(s) in the appropriate underscore(s)
-# If the guess is incorrect increment incorrect_guesses by 1, and inform the player they are incorrect
+# PSEUDOCODE
+# First Player enters word and word is stored in a variable
+# Display the length of the word to the Second Player in underscores
+# Set allowed guesses to the length of the word 
+# Prompt the Second Player to guess a single letter
+# If the guess is correct, reveal the correct letter(s) in the appropriate underscore(s)
+# If the guess is incorrect decrement attempts left by 1, and inform the player they are incorrect
 # Prompt the player to guess another letter
-# If the incorrect_guesses is greater than the length of the word, tell the player they lost and exit the program
+# If attempts left drops to 0, tell the player they lost and exit the program
 # Else let the player keep guessing letters
 # If the player reveals the word, let them know they won the round
