@@ -1,5 +1,5 @@
 class Game
-  attr_reader :guesses, :hint, :gameover
+  attr_reader :guesses, :hint, :game_won
   attr_accessor :word
 
   def initialize(word)
@@ -7,7 +7,7 @@ class Game
     @guesses = word.length + 3
     @hint = Array.new(word.length) { "_" }
     @guessed_letters = []
-    @gameover = false
+    @game_won = false
     end
   
   def guess(letter)
@@ -20,8 +20,8 @@ class Game
     end
   end
 
-  def gameover
-    @gameover = (@hint.join == @word)
+  def game_won
+    @game_won = (@hint.join == @word)
   end
 end
 
@@ -56,7 +56,7 @@ class Driver
 
   def run 
     intro 
-    until @game.guesses == 0 || @game.gameover
+    until @game.guesses == 0 || @game.game_won
       puts 'Hint: ' + @game.hint.join(' ')
       puts 'Guesses remaining: ' + @game.guesses.to_s
       puts 'Enter letter:'
@@ -69,13 +69,13 @@ class Driver
 
       @game.guess(current_guess)
 
-      if @game.gameover
+      if @game.game_won
         puts "Huzzah! '#{@game.word.upcase}' is correct! Hooray!\nYou WON!!! Now switch players and PLAY AGAIN!"
         break
       end
     end
     
-    if !@game.gameover
+    if !@game.game_won
       puts "GAMEOVER!!!\nAww, too bad! You ran out of guesses...\nThe word was: '#{@game.word.upcase}'\nBetter luck next time!"
       puts hanged
     end
