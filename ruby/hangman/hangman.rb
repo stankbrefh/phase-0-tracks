@@ -46,12 +46,8 @@ class Driver
   end
 
   def is_word(word)
-    word.length.times do |i|
-      if !is_letter(word[i])
-        return false
-      end
-    end
-    return true
+    word.each_char { |char| return false if not is_letter(char) }
+    !word.empty?
   end
 
   def run 
