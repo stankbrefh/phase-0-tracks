@@ -8,14 +8,14 @@ class Game
     @hint = Array.new(word.length) { "_" }
     @guessed_letters = []
     @game_won = false
-    end
+  end
   
   def guess(letter)
     if @guessed_letters.include? letter
       puts 'How\'s about you try a different letter, wise guy!'
     else
       @guessed_letters << letter
-      @word.length.times { |i| @hint[i] = letter if @word[i] == letter } if @word.include? letter
+      @word.length.times { |i| @hint[i] = letter if @word[i] == letter }
       @guesses -= 1
     end
   end
@@ -46,9 +46,23 @@ class Driver
   end
 
   def is_word(word)
-    word.each_char { |char| return false if not is_letter(char) }
-    !word.empty?
+    word.length.times do |i|
+      if !is_letter(word[i])
+        return false
+      end
+    end
+    return true
   end
+  
+  # After refactoring is_word method as shown below, program runs BETTER 
+  # and does not allow for nil to be accepted as input for word...
+  # However, RSpec will not run tests and returns `run`: undefined method 
+  # `chomp` for nil:NilClass (NoMethodError)
+
+  # def is_word(word)
+  #   word.each_char { |char| return false if !is_letter(char) }
+  #   !word.empty?
+  # end
 
   def run 
     intro 
