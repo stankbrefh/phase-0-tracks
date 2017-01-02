@@ -12,7 +12,7 @@ class Game
   
   def guess(letter)
     if @guessed_letters.include? letter
-      puts 'How\'s about you try a different letter, wise guy!'
+      puts "Oops! It looks like you already tried that letter... \nGo ahead and guess again!"
     else
       @guessed_letters << letter
       @word.length.times { |i| @hint[i] = letter if @word[i] == letter }
@@ -27,8 +27,8 @@ end
 
 class Driver 
   def intro 
-    puts '*********** WELCOME TO HANGMAN 1.0 *************'
-    puts 'Player ONE enter a word for Player TWO to guess:'
+    puts '*********** WELCOME TO HANGMAN 1.0 ***********'
+    puts "Player ONE, make sure Player TWO isn't looking\nand enter a SINGLE WORD for them to guess:"
     input = gets.chomp.downcase
 
     until is_word(input)
@@ -36,7 +36,9 @@ class Driver
       input = gets.chomp.downcase
     end
     
-    puts "Great word!\nNow Player TWO, without cheating,\ntry and GUESS the word ONE letter at a time!"
+    puts "Great word!Now it's Player TWO's turn!"
+    50.times {puts ""}
+    puts "Now Player TWO, without cheating,\ntry and GUESS the word ONE letter at a time!"
     @game = Game.new(input)
   end 
   
