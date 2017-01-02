@@ -4,11 +4,11 @@ class Game
 
   def initialize(word)
     @word = word
-    @guesses = word.length + 3
+    @guesses = word.length
     @current_state = Array.new(word.length) { "_" }
     @wrong_letters = []
     @gameover = false
-  end
+    end
   
   def guess(letter)
     if @wrong_letters.include? letter
@@ -25,59 +25,72 @@ class Game
   end
 end
 
-def is_letter(letter)
-  alphabet = ('a'..'z').to_a
-  (alphabet.include? letter[0]) && (letter.length == 1) if !letter.empty?
-end
+class Driver 
+  def intro 
+    puts '*********** WELCOME TO HANGMAN 1.0 *************'
+    puts 'Player ONE enter a word for Player TWO to guess:'
+    input = gets.chomp.downcase
 
-def is_word(word)
-  word.length.times do |i|
-    if !is_letter(word[i])
-      return false
+    until is_word(input)
+      puts 'Please only use letters A-Z in your word.'
+      input = gets.chomp.downcase
+    end
+    
+    puts "Great word!\nNow Player TWO, without cheating,\ntry and GUESS the word ONE letter at a time!"
+    @game = Game.new(input)
+  end 
+  
+  def is_letter(letter)
+    alphabet = ('a'..'z').to_a
+    (alphabet.include? letter) && (letter.length == 1)
+  end
+
+  def is_word(word)
+    word.length.times do |i|
+      if !is_letter(word[i])
+        return false
+      end
+    end
+    return true
+  end
+
+  def run 
+    intro 
+    until @game.guesses == 0 || @game.gameover
+      puts 'Hint: ' + @game.current_state.join(' ')
+      puts 'Guesses remaining: ' + @game.guesses.to_s
+      puts 'Enter letter:'
+      current_guess = gets.chomp.downcase
+
+      until is_letter(current_guess)
+        puts 'Oops! Please be sure to guess with a SINGLE letter, A-Z:'
+        current_guess = gets.chomp.downcase
+      end
+
+      @game.guess(current_guess)
+
+      if @game.gameover
+        puts 'Hooray! You WON!'
+        break
+      end
+    end
+    
+    if !@game.gameover
+      puts "GAMEOVER!!!\nAww, too bad! You ran out of guesses...\nThe word was: '#{@game.word.upcase}'!\nBetter luck next time!"
+      puts hanged
     end
   end
-  return true
-end
 
-hanged = <<HANG
-+---+-
-|   |
-|   0
-|   |\\
-|   /\\
+  def hanged 
+    hanged = <<HANG
+ +---+-
+ |   |
+ |   0
+ |   |\\
+ |   /\\
 -+----------
 HANG
-
-puts 'Enter word:'
-input = gets.chomp.downcase
-
-until is_word(input)
-  puts 'Please only use letters A-Z in your word.'
-  input = gets.chomp.downcase
-end
-
-game = Game.new(input)
-
-until game.guesses == 0 || game.gameover
-  puts 'Attempts remaining: ' + game.guesses.to_s
-  puts 'Enter letter:'
-  current_guess = gets.chomp.downcase
-
-  until is_letter(current_guess)
-    puts 'Please ONLY guess with a single letter: A-Z'
-    current_guess = gets.chomp.downcase
-  end
-
-  game.guess(current_guess)
-  puts 'Status: ' + game.current_state.join(' ').dump
-
-  if game.gameover
-    puts 'GGWP'
-    break
   end
 end
 
-if !game.gameover
-  puts 'You\'re a loser and nobody likes you!'
-  puts hanged
-end
+Driver.new.run
