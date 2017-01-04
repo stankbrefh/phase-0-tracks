@@ -27,7 +27,7 @@ class VirusPredictor
   # conditionals on population density to determine amount of deaths
   def predicted_deaths
     case @population_density 
-    when 200...50_000 then multiplier = 0.4
+    when 200...Float::INFINITY then multiplier = 0.4
     when 150...200 then multiplier = 0.3
     when 100...150 then multiplier = 0.2
     when 50...100 then multiplier = 0.1
@@ -42,7 +42,7 @@ class VirusPredictor
    # conditionals on population density to determine speed of infection
    def speed_of_spread
     case @population_density 
-    when 200...50_000 then speed = 0.5
+    when 200...Float::INFINITY then speed = 0.5
     when 150...200 then speed = 1
     when 100...150 then speed = 1.5
     when 50...100 then speed = 2
@@ -58,7 +58,7 @@ end
 
 # DRIVER CODE
 
-STATE_DATA.each {|state, state_info| VirusPredictor.new(state, state_info[:population_density], state_info[:population]).virus_effects}
+STATE_DATA.each {|state, info| VirusPredictor.new(state, info[:population_density], info[:population]).virus_effects}
 
 #=======================================================================
 # Reflection Section
