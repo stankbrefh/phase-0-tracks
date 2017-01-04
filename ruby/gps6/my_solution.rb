@@ -4,8 +4,8 @@
 # I spent 1 hour on this challenge.
 
 # EXPLANATION OF require_relative
-# `require_relative` searches the current directory for the file and runs it
-# 
+# `require_relative` loads a file that is relative to the location of the program (same directory)
+# `require` gives you access to the many extensions and programming libraries bundled within Ruby
 require_relative 'state_data'
 
 class VirusPredictor
@@ -61,4 +61,16 @@ end
 STATE_DATA.each {|state, info| VirusPredictor.new(state, info[:population_density], info[:population]).virus_effects}
 
 #=======================================================================
+
 # Reflection Section
+
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+# The outer hash uses strings for the keys while the inner hash uses symbols.
+# What does require_relative do? How is it different from require?
+# See 'EXPLANATION OF require_relative' above.
+# What are some ways to iterate through a hash?
+# .each, .each_pair, .each_key, .each_value, or .map
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+# That they were unnecessary; they were already available to the method on initialization.
+# What concept did you most solidify in this challenge?
+# The necessity for, and use of, private methods, including their strengths and weaknesses in Ruby.
