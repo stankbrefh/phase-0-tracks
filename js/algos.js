@@ -23,3 +23,9 @@ var arr2 = ["a","ab","abc","abcd","abcde","abcd"];
 console.log(longestPhrase(arr2)); // => "abcde"
 var arr3 = ["lorem ipsum dolor","sit amet","consetetur sadipscing elitr","sed diam nonumy eirmod tempor"];
 console.log(longestPhrase(arr3)); // => "sed diam nonumy eirmod tempor"
+
+// RELEASE 1: FIND A KEY-VALUE MATCH
+// PSEUDOCODE
+// Iterate through the first objects properties and compare them to the second object.
+// If any key/value pair matches, return true.
+// If there are no matches between the objects key/value pairs, return false.
