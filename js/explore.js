@@ -5,3 +5,13 @@
 // For each letter, add the current letter to the result.
 // Return the result.
 // Log the the result to the console. 
+
+function reverse(str) {
+  var result = '';
+    for (var i = 0; i < str.length; i++) {
+    result = str[i] + result;
+    }
+    return result;
+}
+
+console.log(reverse("Hello"));
