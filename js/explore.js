@@ -8,7 +8,7 @@
 function reverse(str) {
   var result = '';
     for (var i = 0; i < str.length; i++) {
-    result = str[i] + result;
+      result = str[i] + result;
     }
     return result;
 }
