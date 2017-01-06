@@ -72,4 +72,10 @@ function randomTestData(n) {
     return result;
 }
 
-console.log(randomTestData(10));
+// DRIVER CODE
+for (var i = 0; i < 10; i++) {
+    var arr = randomTestData(6);
+    console.log("Phrases: " + arr.join(', '));
+    console.log("Longest Phrase: " + longestPhrase(arr) + "\n");
+
+}
