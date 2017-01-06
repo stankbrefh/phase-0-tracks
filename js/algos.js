@@ -7,13 +7,13 @@
 // Return the longest string after all iterations are complete.
 
 function longestPhrase(arr) {
-      longest = "";
-      for (var i = 0; i < arr.length; i++) {
+    longest = "";
+    for (var i = 0; i < arr.length; i++) {
         if (arr[i].length > longest.length) {
-          longest = arr[i];
+            longest = arr[i];
         }
-      }
-      return longest;
+    }
+    return longest;
 }
 
 // DRIVER CODE
@@ -29,3 +29,21 @@ console.log(longestPhrase(arr3)); // => "sed diam nonumy eirmod tempor"
 // Iterate through the first objects properties and compare them to the second object.
 // If any key/value pair matches, return true.
 // If there are no matches between the objects key/value pairs, return false.
+
+function keyValueMatch(obj1, obj2) {
+    for (var key1 in obj1) {
+        for (var key2 in obj2) {
+            if (key1 === key2 && obj1[key1] === obj2[key2]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// DRIVER CODE
+var obj1 = {name: "Steven", age: 54};
+var obj2 = {name: "Yamir", age: 54};
+console.log(keyValueMatch(obj1, obj2)); // => true
+var obj1 = {name: "Steven", age: 55};
+console.log(keyValueMatch(obj1, obj2)); // => false
