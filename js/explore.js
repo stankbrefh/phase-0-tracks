@@ -1,5 +1,4 @@
 // PSEUDOCODE
-
 // Create a function that takes a string as a parameter.
 // Declare a result variable and set it equal to an empty string.
 // For each letter, add the current letter to the result.
@@ -14,4 +13,7 @@ function reverse(str) {
     return result;
 }
 
-console.log(reverse("Hello"));
+// DRIVER CODE
+var str = "Hello";
+var reversedStr = console.log(reverse(str));
+if(str == "Hello") console.log(reverse(str));
