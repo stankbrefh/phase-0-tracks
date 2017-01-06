@@ -56,3 +56,20 @@ console.log(keyValueMatch(obj1, obj2)); // => false
 // Push that string into an array.
 // Continue until n-1 iterations are done.
 // Return the array of strings.
+
+function randomTestData(n) {
+    alphabet = "abcdefghijklmnopqrstuvwxyz";
+    result = [];
+    for (var i = 0; i < n; i++) {
+        var string = "";
+        var randomInt = Math.floor((Math.random() * 10) + 1);
+        for (var j = 0; j < randomInt; j++) {
+            var randomLetter = Math.floor(Math.random() * (alphabet.length));
+            string += alphabet[randomLetter];
+        }
+        result.push(string);
+    }
+    return result;
+}
+
+console.log(randomTestData(10));
