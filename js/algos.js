@@ -47,3 +47,12 @@ var obj2 = {name: "Yamir", age: 54};
 console.log(keyValueMatch(obj1, obj2)); // => true
 var obj1 = {name: "Steven", age: 55};
 console.log(keyValueMatch(obj1, obj2)); // => false
+
+// RELEASE 2: GENERATE RANDOM TEST DATA
+// PSEUDOCODE
+// Take in integer (n) and iterate through n times.
+// Each loop, determine the random length of the string, 1-10.
+// Build a string of that length from random letters in the alphabet.
+// Push that string into an array.
+// Continue until n-1 iterations are done.
+// Return the array of strings.
