@@ -16,23 +16,45 @@ class Tasker
     @db.execute(create_table_cmd)
   end
 
-  def add_task(task, description)
+  def add_task
+  	puts "ADD A TASK"
+    puts "Enter a title for the task:"
+    task = gets.chomp.downcase.capitalize
+    puts "Add a brief description:"
+    description = gets.chomp.downcase.capitalize
     @db.execute("INSERT INTO tasks (task, description, completed) VALUES ('#{task}', '#{description}', 'false')")
+    puts "Task successfully added!"
+    main_menu
   end
 
-  def complete_task(task)
+  def complete_task
+  	puts "COMPLETE A TASK"
+  	puts "Enter the title of the task to be completed"
+  	task = gets.chomp.downcase.capitalize
     @db.execute("UPDATE tasks SET completed = 'true' WHERE task = '#{task}'")
+    puts "Task successfully completed! Great job!"
+    main_menu
   end
 
-  def delete_task(task)
+  def delete_task
+    puts "REMOVE A TASK"
+    puts "Enter the title of the task to be removed:"
+    task = gets.chomp.downcase.capitalize
     @db.execute("DELETE FROM tasks WHERE task = '#{task}'")
+    puts "Task successfully removed!"
+    main_menu
   end
 
-  def clear_all()
-    @db.execute("DROP TABLE tasks")
+  def clear_all
+  	puts "CLEAR ALL TASKS"
+  	puts "Are you sure you want to remove ALL tasks? (y/n)"
+  	answer = gets.chomp.downcase
+    answer == 'y' ? @db.execute("DROP TABLE tasks") : main_menu
+    puts "Successfully cleared ALL tasks!"
+    main_menu
   end
 
-  def show_all()
+  def show_all
     counter = 1
     tasks = @db.execute("SELECT * FROM tasks")
     tasks.each do |task|
@@ -40,14 +62,11 @@ class Tasker
       puts "#{counter}. #{task['task']} - #{task['description']} " + completed
       counter += 1
     end
-  end
-
-  def intro
-    puts "****** Welcome to Tasker 1.0 ******"
+    main_menu
   end
 
   def main_menu
-    puts "Main Menu\nWhat would you like to do?"
+    puts "MAIN MENU\nWhat would you like to do?"
     puts "'v': view current tasks."
     puts "'a': add a new task."
     puts "'u': update a task."
@@ -55,30 +74,25 @@ class Tasker
     puts "'r': remove a task."
     puts "'x': clear all tasks."
     puts "'q': quit the program."
-    @selection = gets.chomp.downcase
+    selection = gets.chomp.downcase
+    case selection
+    when 'v' then show_all
+    when 'a' then add_task
+    when 'u' then 
+    when 'c' then complete_task
+    when 'r' then delete_task
+    when 'x' then clear_all
+    when 'q' then exit
+    else
+      puts "Oops! Please select from the listed options"
+      main_menu
+    end
   end
 
   def run
-    intro
+    puts "****** WELCOME TO TASKER 1.0 ******"
     main_menu
-    case
-    when @selection == 'a' then
-    when @selection == 'u' then
-    when @selection == 'c' then
-    when @selection == 'r' then
-    when @selection == 'x' then
-    when @selection == 'q' then exit
-    else
-      puts "Oops! Please select from the listed options"
-    end
   end
 end
-
-# test = Tasker.new
-# test.add_task("Homework", "Read Chapters 1-3")
-# test.complete_task("Homework")
-# test.delete_task("Chores")
-# test.clear_all
-# test.show_all
 
 Tasker.new.run
