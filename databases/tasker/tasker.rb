@@ -32,10 +32,53 @@ class Tasker
     @db.execute("DROP TABLE tasks")
   end
 
+  def show_all()
+    counter = 1
+    tasks = @db.execute("SELECT * FROM tasks")
+    tasks.each do |task|
+      task['completed'] == 'true' ? completed = "[x]" : completed = "[ ]"
+      puts "#{counter}. #{task['task']} - #{task['description']} " + completed
+      counter += 1
+    end
+  end
+
+  def intro
+    puts "****** Welcome to Tasker 1.0 ******"
+  end
+
+  def main_menu
+    puts "Main Menu\nWhat would you like to do?"
+    puts "'v': view current tasks."
+    puts "'a': add a new task."
+    puts "'u': update a task."
+    puts "'c': complete a task."
+    puts "'r': remove a task."
+    puts "'x': clear all tasks."
+    puts "'q': quit the program."
+    @selection = gets.chomp.downcase
+  end
+
+  def run
+    intro
+    main_menu
+    case
+    when @selection == 'a' then
+    when @selection == 'u' then
+    when @selection == 'c' then
+    when @selection == 'r' then
+    when @selection == 'x' then
+    when @selection == 'q' then exit
+    else
+      puts "Oops! Please select from the listed options"
+    end
+  end
 end
 
-test = Tasker.new
-# test.add_task("Chores", "Clean room")
-# test.complete_task("Chores")
+# test = Tasker.new
+# test.add_task("Homework", "Read Chapters 1-3")
+# test.complete_task("Homework")
 # test.delete_task("Chores")
 # test.clear_all
+# test.show_all
+
+Tasker.new.run
