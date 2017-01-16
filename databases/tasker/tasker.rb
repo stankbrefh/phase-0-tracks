@@ -17,7 +17,7 @@ class Tasker
   end
 
   def add_task
-  	puts "ADD A TASK"
+    puts "ADD A TASK"
     puts "Enter a title for the task:"
     task = gets.chomp.downcase.capitalize
     puts "Add a brief description:"
@@ -38,11 +38,11 @@ class Tasker
 
   def update_task
     puts "UPDATE A TASK'S DESCRIPTION"
-    puts "Enter the title of the task to be updated"
-    task = gets.chomp.downcase.capitalize
+    puts "Enter the number of the task to be updated"
+    id = gets.to_i
     puts "Enter a new description for the task"
     description = gets.chomp.downcase.capitalize
-    @db.execute("UPDATE tasks SET description = ? WHERE task = ?", [description, task])
+    @db.execute("UPDATE tasks SET description = ? WHERE id = ?", [description, id])
     puts "Task successfully updated!"
     main_menu
   end
@@ -57,33 +57,35 @@ class Tasker
   end
 
   def clear_all
-  	puts "CLEAR ALL TASKS"
-  	puts "Are you sure you want to remove ALL tasks? (y/n)"
-  	answer = gets.chomp.downcase
+    puts "DELETE ALL TASKS"
+    puts "Once complete, the program will exit.\nAre you sure you want to permanently delete ALL tasks? (y/n)"
+    answer = gets.chomp.downcase
     answer == 'y' ? @db.execute("DROP TABLE tasks") : main_menu
-    puts "Successfully cleared ALL tasks!"
-    main_menu
+    puts "Successfully delete ALL tasks!"
+    exit
   end
 
   def show_all
-    counter = 1
+    puts "=" * 40
+    puts "Current Tasks:"
     tasks = @db.execute("SELECT * FROM tasks")
     tasks.each do |task|
       task['completed'] == 'true' ? completed = "[x]" : completed = "[ ]"
       puts "#{task['id']}. #{task['task']} - #{task['description']} " + completed
-      counter += 1
     end
+    puts "=" * 40
     main_menu
   end
 
   def main_menu
-    puts "MAIN MENU\nWhat would you like to do?"
+    puts "\nMAIN MENU"
+    puts "What would you like to do?"
     puts "'v': view current tasks."
     puts "'a': add a new task."
-    puts "'u': update a task."
+    puts "'u': update the description of a task."
     puts "'c': complete a task."
     puts "'r': remove a task."
-    puts "'x': clear all tasks."
+    puts "'x': delete all tasks."
     puts "'q': quit the program."
     selection = gets.chomp.downcase
     case selection
@@ -101,8 +103,8 @@ class Tasker
   end
 
   def run
-    puts "****** WELCOME TO TASKER 1.0 ******"
-    main_menu
+    puts "********* WELCOME TO TASKER 1.0 ********"
+    show_all
   end
 end
 
