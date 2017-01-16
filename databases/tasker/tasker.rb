@@ -22,16 +22,16 @@ class Tasker
     task = gets.chomp.downcase.capitalize
     puts "Add a brief description:"
     description = gets.chomp.downcase.capitalize
-    @db.execute("INSERT INTO tasks (task, description, completed) VALUES ('#{task}', '#{description}', 'false')")
+    @db.execute("INSERT INTO tasks (task, description, completed) VALUES (?, ?, 'false')", [task, description])
     puts "Task successfully added!"
     main_menu
   end
 
   def complete_task
     puts "COMPLETE A TASK"
-    puts "Enter the title of the task to be completed"
-    task = gets.chomp.downcase.capitalize
-    @db.execute("UPDATE tasks SET completed = 'true' WHERE task = '#{task}'")
+    puts "Enter the number of the task to be completed"
+    id = gets.to_i
+    @db.execute("UPDATE tasks SET completed = 'true' WHERE id = ?", [id])
     puts "Task successfully completed! Great job!"
     main_menu
   end
@@ -42,7 +42,7 @@ class Tasker
     task = gets.chomp.downcase.capitalize
     puts "Enter a new description for the task"
     description = gets.chomp.downcase.capitalize
-    @db.execute("UPDATE tasks SET description = '#{description}' WHERE task = '#{task}'")
+    @db.execute("UPDATE tasks SET description = ? WHERE task = ?", [description, task])
     puts "Task successfully updated!"
     main_menu
   end
@@ -51,7 +51,7 @@ class Tasker
     puts "REMOVE A TASK"
     puts "Enter the number of the task to be removed:"
     id = gets.to_i
-    @db.execute("DELETE FROM tasks WHERE id = '#{id}'")
+    @db.execute("DELETE FROM tasks WHERE id = ?", [id])
     puts "Task successfully removed!"
     main_menu
   end
