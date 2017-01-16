@@ -1,0 +1,50 @@
+1. Display the information in one table (either table is fine).
+sqlite> SELECT * FROM books;
+1|The Brothers Karamazov|1|1|2017-01-15 22:31:24
+2|Sickness Unto Death|5|1|2017-01-15 22:43:49
+3|Fear and Trembling|5|1|2017-01-15 22:44:52
+4|Faust|4|1|2017-01-15 22:49:35
+5|The Sorrows of Young Werther|4|0|2016-12-15 22:50:50
+6|Thus Spoke Zarathustra|3|1|2016-11-09 22:52:11
+7|Beyond Good and Evil|3|1|2016-11-16 22:53:48
+8|Dead Souls|2|1|2016-11-23 22:54:53
+9|Crime and Punishment|1|0|2016-11-23 22:55:32
+10|The Idiot|1|1|2016-12-29 22:56:07
+11|Demons|1|1|2016-12-31 22:57:17
+12|Notes from Underground|1|1|2017-01-15 23:00:47
+
+2. Update an item that meets some condition.
+sqlite> UPDATE books SET in_stock = 1 WHERE title = "Crime and Punishment";
+
+3. Display the information in both tables using one query.
+sqlite> SELECT * FROM books, authors WHERE books.author_id = authors.id;
+1|The Brothers Karamazov|1|1|2017-01-15 22:31:24|1|Fyodor|Dostoyevsky
+2|Sickness Unto Death|5|1|2017-01-15 22:43:49|5|Soren|Kierkegaard
+3|Fear and Trembling|5|1|2017-01-15 22:44:52|5|Soren|Kierkegaard
+4|Faust|4|1|2017-01-15 22:49:35|4|Johann Wolfgang von|Goethe
+5|The Sorrows of Young Werther|4|0|2016-12-15 22:50:50|4|Johann Wolfgang von|Goethe
+6|Thus Spoke Zarathustra|3|1|2016-11-09 22:52:11|3|Friedrich|Nietzsche
+7|Beyond Good and Evil|3|1|2016-11-16 22:53:48|3|Friedrich|Nietzsche
+8|Dead Souls|2|1|2016-11-23 22:54:53|2|Nikolai|Gogol
+9|Crime and Punishment|1|1|2016-11-23 22:55:32|1|Fyodor|Dostoyevsky
+10|The Idiot|1|1|2016-12-29 22:56:07|1|Fyodor|Dostoyevsky
+11|Demons|1|1|2016-12-31 22:57:17|1|Fyodor|Dostoyevsky
+12|Notes from Underground|1|1|2017-01-15 23:00:47|1|Fyodor|Dostoyevsky
+
+4. Display a narrower selection of columns from both tables using one query.
+sqlite> SELECT books.title, authors.lastname FROM books JOIN authors ON books.author_id = authors.id;
+The Brothers Karamazov|Dostoyevsky
+Sickness Unto Death|Kierkegaard
+Fear and Trembling|Kierkegaard
+Faust|Goethe
+The Sorrows of Young Werther|Goethe
+Thus Spoke Zarathustra|Nietzsche
+Beyond Good and Evil|Nietzsche
+Dead Souls|Gogol
+Crime and Punishment|Dostoyevsky
+The Idiot|Dostoyevsky
+Demons|Dostoyevsky
+Notes from Underground|Dostoyevsky
+
+5. Delete an item that meets some condition.
+sqlite> DELETE FROM books WHERE in_stock = 0;
