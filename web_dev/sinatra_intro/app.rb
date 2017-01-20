@@ -68,7 +68,23 @@ end
 
 # write a GET route that retrieves
 # route parameters to add two numbers and respond with the result
-get '/:int1/plus/:int2' do
-  sum = params[:int1].to_i + params[:int2].to_i
+get '/:a/plus/:b' do
+  sum = params[:a].to_i + params[:b].to_i
   sum.to_s
+end
+
+# write a GET route that
+# allows the user to search the database
+get '/students/search/:query_type/:query' do
+  query_type = params[:query_type]
+  query = params[:query]
+  students = db.execute("SELECT * FROM students WHERE #{query_type}=?", query)
+  response = ''
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+  end
+  response
 end
