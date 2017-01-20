@@ -59,11 +59,7 @@ end
 # a person's name as a query parameter
 get '/great_job' do
   name = params[:name]
-  if name
-    "Good job, #{name}!"
-  else
-    "Good job!"
-  end
+  name ? "Good job, #{name}!" : "Good job!"
 end
 
 # write a GET route that retrieves
