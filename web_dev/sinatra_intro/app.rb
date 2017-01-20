@@ -9,9 +9,9 @@ db.results_as_hash = true
 # write a basic GET route
 # add a query parameter
 # GET /
-# get '/' do
-#   "#{params[:name]} is #{params[:age]} years young."
-# end
+get '/' do
+  "#{params[:name]} is #{params[:age]} years young."
+end
 
 # write a GET route with
 # route parameters
@@ -53,4 +53,15 @@ get '/contact' do
   707 Broadway<br>
   Suite 800<br>
   San Diego, CA 92101<br>"
+end
+
+# write a GET route with
+# a person's name as a query parameter
+get '/great_job' do
+  name = params[:name]
+  if name
+    "Good job, #{name}!"
+  else
+    "Good job!"
+  end
 end
