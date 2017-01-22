@@ -24,4 +24,10 @@ post '/students' do
   redirect '/'
 end
 
+get '/campus/:name' do
+  @name = params[:name].upcase
+  @students = db.execute("SELECT * FROM students WHERE UPPER(campus) = UPPER(?);", [@name])
+  erb :campus
+end
+
 # add static resources
