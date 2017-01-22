@@ -4,6 +4,9 @@
   <title>Campus <%= @name %></title>
 </head>
 <body>
+  <nav>
+    <li><a href="/">Home</a></li>
+  </nav>
   <h1><%= @name %></h1>
   <ul>
     <% @students.each do |student| %>
