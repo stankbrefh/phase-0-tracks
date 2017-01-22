@@ -4,6 +4,7 @@ var word = "JavaScript";
 drawName(word, blue);
 bounceBubbles();
 
-document.getElementById("myBtn").addEventListener("click", function(){
-    document.getElementById("demo").innerHTML = "Hello World";
+var button = document.getElementById("myBtn")
+button.addEventListener("click", function(){
+    document.getElementById("demo").innerHTML = "Thanks to Rob Hawkes";
 });
