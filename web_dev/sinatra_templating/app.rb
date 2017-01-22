@@ -1,6 +1,7 @@
 # require gems
 require 'sinatra'
 require 'sqlite3'
+require "sinatra/reloader" if development?
 
 set :public_folder, File.dirname(__FILE__) + '/static'
 
@@ -28,6 +29,20 @@ get '/campus/:name' do
   @name = params[:name].upcase
   @students = db.execute("SELECT * FROM students WHERE UPPER(campus) = UPPER(?);", [@name])
   erb :campus
+end
+
+get '/campuses' do
+  @campuses = db.execute("SELECT * FROM campuses;")
+  erb :campuses
+end
+
+get '/campuses/new' do
+  erb :new_campus
+end
+
+post '/campuses' do
+  db.execute("INSERT INTO campuses (name, location) VALUES (?,?)", [params[:name], params[:location]])
+  redirect "/"
 end
 
 # add static resources
