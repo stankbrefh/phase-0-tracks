@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campuses</title>
+</head>
+<body>
+  <h1>DBC Campuses</h1>
+  <ul>
+    <% @campuses.each do |campus| %>
+      <% campus_url = "/campus/#{campus['name']}" %>
+      <li>
+        <a href= <%= campus_url %> >
+          <%= campus['name'] %>, <%= campus['location'] %>
+        </a>
+      </li>
+    <% end %>
+  </ul> 
+</body>
+</html>
